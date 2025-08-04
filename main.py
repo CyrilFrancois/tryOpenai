@@ -11,11 +11,11 @@ prompt = "How to throw a unicorn into a crowed market? Write a really short medf
 def generate_chatgpt_response(prompt):
     response = client.chat.completions.create(
     model=os.getenv("SUMMARY_MODEL"),
+    temperature=1, #0 to 1 ; A temperature of 0 means the responses will be very straightforward and predictable ; A temperature closer to 1 means the responses can vary wildly.
     messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "How to launch a unicorn?"}
+        {"role": "system", "content": "You are a fun storyteller assistant."},
+        {"role": "user", "content": prompt}
     ],
-    temperature=0,
     )
     return response.choices[0].message.content
 
